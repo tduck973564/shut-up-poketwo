@@ -15,6 +15,10 @@ impl EventHandler for Handler {
             if let Err(why) = msg.channel_id.say(&ctx.http, "SHUT UP POKETWO!!!!!!!!!!!11!!!!!111111!!!!").await {
                 println!("trolling could not be done: {:?}", why);
             }
+        } else if msg.author.id.0 == 275959780164632576 {
+            if let Err(why) = msg.channel_id.say(&ctx.http, "SHUT UP FUST!!!!!!!!!!!11!!!!!111111!!!!").await {
+                println!("trolling could not be done: {:?}", why);
+            }
         }
     }
     async fn ready(&self, _: Context, ready: Ready) {
