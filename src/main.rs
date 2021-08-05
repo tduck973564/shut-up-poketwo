@@ -4,6 +4,7 @@ use serenity::{
     async_trait,
     model::{channel::Message, gateway::Ready},
     prelude::*,
+    utils::MessageBuilder,
 };
 
 struct Handler;
@@ -11,7 +12,15 @@ struct Handler;
 #[async_trait]
 impl EventHandler for Handler {
     async fn message(&self, ctx: Context, msg: Message) {
-        if msg.author.id.0 == 716390085896962058 {
+	if msg.content == "fuck you chriswin" {
+                let chriswin = serenity::model::id::UserId(811068298934091777);
+		loop {
+                    let response = MessageBuilder::new().mention(&chriswin).build();
+		    if let Err(why) = msg.channel_id.say(&ctx.http, &response).await {
+                        println!("Horbs");
+                    }
+                }
+        } else if msg.author.id.0 == 716390085896962058 {
             if let Err(why) = msg.channel_id.say(&ctx.http, "SHUT UP POKETWO!!!!!!!!!!!11!!!!!111111!!!!").await {
                 println!("trolling could not be done: {:?}", why);
             }
